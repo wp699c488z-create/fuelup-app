@@ -1,7 +1,7 @@
 // FuelUp 1.1: Zwei kostenlose, lokal ausgeführte Bildklassifikatoren.
 // ImageNet erkennt viele einzelne Lebensmittel; Food-101 erkennt zubereitete Gerichte.
 // Beide Modelle müssen einmalig heruntergeladen werden. Keine kostenpflichtige API.
-const GENERAL_MODEL = 'Xenova/mobilenet_v2_1.0_224';
+const GENERAL_MODEL = 'onnx-community/mobilenet_v2_1.0_224';
 const DISH_MODEL = 'onnx-community/swin-finetuned-food101-ONNX';
 let libraryPromise;
 let generalPromise;
@@ -63,7 +63,8 @@ export function chooseDish(results) {
   return {label:best.label,score:Number(best.score),source:'dish'};
 }
 export async function identifyMeal(dataUrl, onProgress=()=>{}) {
-  const general=await getGeneral(onProgress);
+  let general;
+  try { general=await getGeneral(onProgress); } catch (error) { throw new Error('Das Lebensmittel-Modell konnte nicht geladen werden. Bitte Internetverbindung prüfen und später erneut versuchen. Details: '+error.message); }
   onProgress('Einzelne Lebensmittel werden erkannt …');
   const candidates=await general(dataUrl,{top_k:8});
   const simple=matchSimpleFood(candidates);

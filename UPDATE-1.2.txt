@@ -1,0 +1,1 @@
+FuelUp 1.2: Korrigiert nicht erreichbares Modell Xenova/mobilenet_v2_1.0_224 auf öffentlich dokumentiertes onnx-community/mobilenet_v2_1.0_224. Service-Worker-Cache auf v1.2 erhöht. Noch kein End-to-End-Test auf iPhone; die erste Modelldatei wird extern geladen. Keine API-Gebühren.
