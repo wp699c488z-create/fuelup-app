@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="FuelUp">
+  <meta name="description" content="Dein kostenloses Ernährungstagebuch mit lokaler Foto-KI und Muskelaufbau-Dashboard.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <link rel="stylesheet" href="./styles.css">
+  <title>FuelUp – Dein Ernährungscoach</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark" aria-hidden="true">F<span class="spark">✦</span></span><div><strong>FuelUp</strong><small>DEIN ERNÄHRUNGSCOACH</small></div></div>
+      <button class="icon-button" id="settingsButton" title="Einstellungen" aria-label="Einstellungen öffnen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06-1.78 1.78-.06-.06A1.65 1.65 0 0 0 16.13 18a1.65 1.65 0 0 0-1 .95L15 19.2h-3l-.12-.25A1.65 1.65 0 0 0 10.9 18a1.65 1.65 0 0 0-1.82.33l-.06.06-1.78-1.78.06-.06A1.65 1.65 0 0 0 7 14.73a1.65 1.65 0 0 0-.95-1L5.8 13.6v-3l.25-.12A1.65 1.65 0 0 0 7 9.5a1.65 1.65 0 0 0-.33-1.82l-.06-.06 1.78-1.78.06.06A1.65 1.65 0 0 0 10.27 6a1.65 1.65 0 0 0 1-.95L11.4 4.8h3l.12.25A1.65 1.65 0 0 0 15.5 6a1.65 1.65 0 0 0 1.82-.33l.06-.06 1.78 1.78-.06.06A1.65 1.65 0 0 0 19 9.27a1.65 1.65 0 0 0 .95 1l.25.12v3l-.25.12A1.65 1.65 0 0 0 19.4 15Z"/></svg></button>
+    </header>
+    <main id="main" tabindex="-1">
+      <section id="dashboardView" class="view">
+        <div class="welcome"><div><p class="eyebrow" id="dateLabel"></p><h1>Dein Fortschritt.<br><span>Dein Muskelaufbau.</span></h1><p class="welcome-sub">Jede Mahlzeit bringt dich deinem Ziel näher.</p></div><div class="live-chip"><span class="live-dot"></span> Lokal & kostenlos</div></div>
+        <div class="hero-card">
+          <div class="hero-heading"><div><p class="mini-heading">DEINE TAGESBILANZ</p><h2>Kalorien</h2></div><span class="estimate-tag">Richtwerte</span></div>
+          <div class="hero-body"><div class="calorie-circle" id="calorieCircle"><div class="circle-inner"><span id="kcalConsumed">0</span><small>von <span id="kcalGoal">2.900</span> kcal</small></div></div><div class="calorie-description"><div class="metric-caption">NOCH OFFEN</div><div class="remaining-number" id="kcalRemaining">2.900 <small>kcal</small></div><p>Für deinen Muskelaufbau</p><div class="day-progress"><div id="dayProgressBar"></div></div><span class="small-muted" id="goalText">0 % deines Tagesziels</span></div></div>
+        </div>
+        <div class="section-heading"><h2>Deine Makros</h2><span>Heute</span></div>
+        <div class="macro-grid">
+          <div class="macro-card protein"><div class="macro-icon">💪</div><div class="macro-name">Eiweiß</div><div class="macro-value"><strong id="proteinUsed">0</strong><span> / <span id="proteinGoal">155</span> g</span></div><div class="track"><span id="proteinBar"></span></div></div>
+          <div class="macro-card carbs"><div class="macro-icon">⚡</div><div class="macro-name">Kohlenhydrate</div><div class="macro-value"><strong id="carbsUsed">0</strong><span> / <span id="carbsGoal">390</span> g</span></div><div class="track"><span id="carbsBar"></span></div></div>
+          <div class="macro-card fat"><div class="macro-icon">🥑</div><div class="macro-name">Fett</div><div class="macro-value"><strong id="fatUsed">0</strong><span> / <span id="fatGoal">80</span> g</span></div><div class="track"><span id="fatBar"></span></div></div>
+        </div>
+        <div class="photo-card"><div class="photo-icon">📸</div><div><strong>Was hast du gegessen?</strong><p>Ein Foto reicht – automatische grobe Schätzung.</p></div><button id="takePhotoHero" class="photo-cta">Foto machen <span aria-hidden="true">→</span></button></div>
+        <div class="section-heading history-heading"><h2>Heute gegessen</h2><button class="text-link" data-tab="history">Alle anzeigen →</button></div>
+        <div id="todayMeals" class="meal-list"></div>
+        <div class="disclaimer">ℹ️ Erkennung nur für 101 Gerichte. Portionsgrößen, Beilagen und Öl werden nicht gemessen. Alle Nährwerte sind grobe Schätzungen.</div>
+      </section>
+      <section id="weekView" class="view hidden">
+        <div class="page-heading"><p class="eyebrow">DEIN 7-TAGE-TREND</p><h1>Die Woche <span>im Blick.</span></h1><p>Entscheidend ist der Durchschnitt, nicht ein einzelner Tag.</p></div>
+        <div class="chart-card"><div class="chart-head"><div><p class="mini-heading">KALORIEN</p><h2>Letzte 7 Tage</h2></div><span class="legend-dot">Tagesziel</span></div><div id="weekBars" class="week-bars"></div></div>
+        <div class="stat-row"><div class="stat-card"><small>Ø Kalorien / Tag</small><strong id="weekAvgKcal">0</strong><span>kcal</span></div><div class="stat-card"><small>Ø Eiweiß / Tag</small><strong id="weekAvgProtein">0</strong><span>g</span></div></div>
+        <div class="tip-card"><span>💡</span><div><strong>So nutzt du die Übersicht</strong><p>Beobachte deinen Wochendurchschnitt und deine Gewichtsentwicklung über 2–3 Wochen. Foto-Schätzungen können stark abweichen.</p></div></div>
+      </section>
+      <section id="historyView" class="view hidden"><div class="page-heading"><p class="eyebrow">DEIN TAGEBUCH</p><h1>Alles <span>auf einen Blick.</span></h1><p>Deine vergangenen Mahlzeiten, nur auf diesem Gerät gespeichert.</p></div><div id="historyMeals" class="history-content"></div></section>
+      <section id="weightView" class="view hidden"><div class="page-heading"><p class="eyebrow">MUSKELAUFBAU</p><h1>Dein Gewicht. <span>Dein Weg.</span></h1><p>Gewicht allein ist nicht alles – zusammen mit deiner Kraftentwicklung zeigt es den Trend.</p></div><div class="weight-card"><div><small>LETZTER EINTRAG</small><div class="weight-value"><strong id="latestWeight">81,5</strong><span>kg</span></div></div><div class="weight-emoji">⚖️</div></div><button class="secondary-cta" id="addWeight">+ Gewicht erfassen</button><div class="section-heading"><h2>Verlauf</h2></div><div id="weightHistory" class="meal-list"></div></section>
+    </main>
+    <nav class="bottom-nav" aria-label="Hauptnavigation"><button class="nav-button active" data-tab="dashboard" aria-label="Übersicht"><span class="nav-icon">◫</span><span>Übersicht</span></button><button class="nav-button" data-tab="week" aria-label="Wochenübersicht"><span class="nav-icon">▥</span><span>Woche</span></button><button class="nav-button" data-tab="history" aria-label="Tagebuch"><span class="nav-icon">▤</span><span>Tagebuch</span></button><button class="nav-button" data-tab="weight" aria-label="Gewicht"><span class="nav-icon">◉</span><span>Gewicht</span></button></nav>
+    <button class="floating-camera" id="floatingCamera" aria-label="Mahlzeit fotografieren">＋</button>
+    <input id="photoInput" type="file" accept="image/*" capture="environment" hidden>
+  </div>
+  <div class="modal-backdrop hidden" id="analysisModal" role="dialog" aria-modal="true" aria-labelledby="analysisTitle"><div class="modal"><button class="close-modal" id="closeAnalysis" aria-label="Schließen">×</button><div class="modal-illustration" id="analysisImage">📷</div><h2 id="analysisTitle">Dein Foto wird analysiert</h2><p id="analysisStatus">Die lokale KI schätzt das Gericht …</p><div class="loading-bar" id="analysisLoading"><span></span></div><div class="analysis-result hidden" id="analysisResult"></div><button id="closeAnalysisDone" class="secondary-cta hidden">Fertig</button></div></div>
+  <div class="modal-backdrop hidden" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><div class="modal settings-modal"><button class="close-modal" id="closeSettings" aria-label="Schließen">×</button><h2 id="settingsTitle">Deine Tagesziele</h2><p>Startwerte für deinen Muskelaufbau – du kannst sie jederzeit ändern.</p><form id="goalsForm" class="settings-form"><label>Kalorien (kcal)<input id="goalKcal" type="number" min="1000" max="8000" step="50" required></label><label>Eiweiß (g)<input id="goalProtein" type="number" min="0" max="500" required></label><label>Kohlenhydrate (g)<input id="goalCarbs" type="number" min="0" max="1000" required></label><label>Fett (g)<input id="goalFat" type="number" min="0" max="400" required></label><button class="secondary-cta" type="submit">Ziele speichern</button></form><div class="settings-exports"><h3>Datensicherung</h3><p>Safari kann lokale Daten bei Speicherbereinigung entfernen. Exportiere deshalb regelmäßig eine Sicherung.</p><button id="exportData" class="outline-button">↓ Backup herunterladen (JSON)</button><button id="importDataButton" class="outline-button">↑ Backup einlesen</button><input id="importFile" type="file" accept="application/json,.json" hidden><button id="clearData" class="danger-button">Alle Einträge löschen</button></div></div></div>
+  <div class="modal-backdrop hidden" id="weightModal" role="dialog" aria-modal="true" aria-labelledby="weightTitle"><div class="modal small-modal"><button class="close-modal" id="closeWeight" aria-label="Schließen">×</button><h2 id="weightTitle">Gewicht eintragen</h2><form id="weightForm"><label class="weight-label">Dein Gewicht in kg<input type="number" id="weightInput" min="25" max="400" step="0.1" inputmode="decimal" required></label><button type="submit" class="secondary-cta">Speichern</button></form></div></div>
+  <div id="toast" class="toast hidden" role="status" aria-live="polite"></div>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
