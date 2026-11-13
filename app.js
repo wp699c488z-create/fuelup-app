@@ -157,7 +157,7 @@ async function processPhoto(file) {
     try { persist(); } catch (e) { state.meals=state.meals.filter(m=>m.id!==meal.id);throw e; }
     render();
     $('analysisTitle').textContent='Mahlzeit gespeichert!';
-    $('analysisStatus').textContent=`${estimate.name} · Gerichterkennung: ${Math.round(meal.score*100)} % Modellzuversicht (keine Nährwertgenauigkeit)`;
+    $('analysisStatus').textContent=`${estimate.name} · Erkennung: ${Math.round(meal.score*100)} % Modellwert (keine Nährwertgenauigkeit)`;
     showAnalysisResult(`<div class="result-name">${escapeHtml(estimate.emoji)} ${escapeHtml(estimate.name)}</div>
       <div class="result-nutrients"><div><strong>${number(meal.kcal)}</strong><small>kcal</small></div><div><strong>${number(meal.protein)}g</strong><small>Eiweiß</small></div><div><strong>${number(meal.carbs)}g</strong><small>KH</small></div><div><strong>${number(meal.fat)}g</strong><small>Fett</small></div></div><p>Typische Portion geschätzt. Beilagen, versteckte Zutaten und Menge können stark abweichen. Foto wird nicht gespeichert.</p>`);
   } catch(error) {

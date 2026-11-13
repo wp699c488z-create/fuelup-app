@@ -1,0 +1,12 @@
+FuelUp 1.1 – Update
+
+1. Lade die entpackten Dateien aus diesem ZIP in das Hauptverzeichnis deines bestehenden GitHub-Repositories fuelup-app hoch (Add file > Upload files).
+2. Bei gleichnamigen Dateien die Aktualisierung bestätigen und Commit changes klicken.
+3. Warte, bis GitHub Pages die neue Version veröffentlicht hat.
+4. Starte FuelUp auf dem iPhone neu. Falls weiterhin die alte Version erscheint, die Webseite in Safari neu laden und gegebenenfalls einige Minuten warten.
+
+Die bisherigen Ernährungseinträge bleiben bei einem normalen Update unter derselben Webadresse im lokalen Speicher deines iPhones. Bitte vor Updates über die Export-Funktion eine Datensicherung erstellen.
+
+Neu: Ein zweites, lokal ausgeführtes Modell prüft zuerst einzelne Lebensmittel (z.B. Banane). Nur wenn das nicht greift, folgt die bisherige Gerichte-Erkennung. Bei geringer Modellzuversicht wird nicht gespeichert. Der erste Modelldownload braucht Internet und kann länger dauern. Keine kostenpflichtige KI-API.
+
+WICHTIG: Die Bildmodelle konnten in dieser Entwicklungsumgebung nicht live auf einem iPhone getestet werden. Die Softwaretests prüfen Zuordnung, Schätzwerte und App-Dateien, aber nicht die reale Bildqualität oder die Verfügbarkeit des Modell-Downloads. Diese Version ist ein verbesserter Teststand, keine garantierte fehlerfreie Bilderkennung.

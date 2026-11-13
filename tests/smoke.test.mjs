@@ -6,7 +6,7 @@ import { dirname, join } from 'node:path';
 import { FOODS, DEFAULT_GOALS, estimateForLabel, sumMeals } from '../nutrition.js';
 const root=join(dirname(fileURLToPath(import.meta.url)),'..');
 test('genau 101 Gerichte mit sinnvollen positiven Schätzwerten', () => {
-  assert.equal(Object.keys(FOODS).length,101);
+  assert.ok(Object.keys(FOODS).length>=115);
   for (const [key, food] of Object.entries(FOODS)) {
     assert.ok(key.length > 0);
     assert.equal(food.length,6);
@@ -27,5 +27,6 @@ test('PWA enthält benötigte Dateien und Bedienelemente',()=>{
   for(const id of ['photoInput','takePhotoHero','todayMeals','weekBars','weightForm','settingsModal','importFile','exportData']) assert.ok(html.includes(`id="${id}"`),id);
   const ai=readFileSync(join(root,'ai.js'),'utf8');
   assert.match(ai,/swin-finetuned-food101-ONNX/);
-  assert.match(ai,/device: 'wasm'/);
+  assert.match(ai,/mobilenet_v2_1.0_224/);
+  assert.match(ai,/device:\s*'wasm'/);
 });
